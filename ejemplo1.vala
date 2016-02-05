@@ -10,24 +10,24 @@ private int intentos;
 	}
 	public static int main(string [] args)
 	{
-		ejemplo1[] nombres={};
+		ejemplo1 lista = new Gee.ArrayList<ejemplo1>();
 
 		stdout.printf("valor min:");
 		int min=int.parse(stdin.read_line());
 		stdout.printf("valor max:");
 		int max=int.parse(stdin.read_line());
-		random(min,max,nombres);
+		random(min,max,lista);
 	return 0;
 	}
-	public static void random(int min, int max,ejemplo1[] nombres)
+	public static void random(int min, int max,ejemplo1 lista)
 	{
 		string nombre="";
 		stdout.printf("Nombre:");
 		nombre=stdin.read_line();
 		int num=Random.int_range (min,max);
-		juego(num,nombre,nombres);
+		juego(num,nombre,lista);
 	}
-	public static void juego(int num,string nombre,ejemplo1[] nombres)
+	public static void juego(int num,string nombre,ejemplo1 lista)
 	{
 	string respuesta="s";
 	int n=0;
@@ -38,7 +38,7 @@ private int intentos;
 			n=int.parse(stdin.read_line());
 			if(n==num)
 			{
-				guardar(intentos,nombre,nombres);		
+				guardar(intentos,nombre,lista);		
 			}else
 			{
 				stdout.printf("Quieres volver a intentarlo? :");
@@ -47,10 +47,10 @@ private int intentos;
 			}
 		}
 	}
-	public static void guardar(int intentos,string nombre,ejemplo1[] nombres)
+	public static void guardar(int intentos,string nombre,ejemplo1 lista)
 	{
 		ejemplo1 nuevo = new ejemplo1(nombre,intentos);
-		nombres += nuevo;
+		lista.add(nuevo);
 	}
 
 }
